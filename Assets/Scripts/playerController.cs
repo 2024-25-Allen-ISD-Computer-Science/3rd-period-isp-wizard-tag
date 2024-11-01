@@ -2,9 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.InputSystem;
+
 
 public class playerController : MonoBehaviour
 {
+    SpecialControls controls;
+
     private float horizontal;
     public float speed;
     public float jumpingPower;
@@ -39,7 +43,22 @@ public class playerController : MonoBehaviour
     [SerializeField] private LayerMask wallLayer;
     [SerializeField] private TrailRenderer tr;
 
+    private void Awake()
+    {
+        controls = new SpecialControls();
 
+        controls.controls.dash.performed += ctx => activateDash();
+    }
+
+    void OnEnable()
+    {
+        controls.controls.Enable();
+    }
+
+    void OnDisable()
+    {
+        controls.controls.Disable();
+    }
     void Update()
     {
 
@@ -105,6 +124,14 @@ public class playerController : MonoBehaviour
         if (!isWallJumping)
         {
             rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+        }
+    }
+
+    private void activateDash()
+    {
+        if (canDash)
+        {
+            StartCoroutine(Dash());
         }
     }
 

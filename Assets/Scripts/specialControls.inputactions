@@ -1,0 +1,54 @@
+{
+    "name": "specialControls",
+    "maps": [
+        {
+            "name": "controls",
+            "id": "c2dea521-906d-455c-95ff-14562cb4d58a",
+            "actions": [
+                {
+                    "name": "pause",
+                    "type": "Button",
+                    "id": "6e2b7149-f817-40db-9ec7-3c2aa5f71afb",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "dash",
+                    "type": "Button",
+                    "id": "bef9e4d7-d1cc-4a91-be01-329d7128b630",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "9718e52b-9bfa-490a-9363-4433ca07a0ec",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8188e54e-dc14-49a2-8a9e-73d1866fb197",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
