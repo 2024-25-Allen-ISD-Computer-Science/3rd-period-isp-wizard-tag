@@ -44,6 +44,24 @@ public partial class @SpecialControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""navigate"",
+                    ""type"": ""Button"",
+                    ""id"": ""90068a6f-5f31-4d22-a281-0becd9f6695a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""click"",
+                    ""type"": ""Button"",
+                    ""id"": ""640b86d8-a652-466c-9350-1f5350822301"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -68,6 +86,72 @@ public partial class @SpecialControls: IInputActionCollection2, IDisposable
                     ""action"": ""dash"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""61e7d769-f02b-4d7c-8555-9aa510f4daf3"",
+                    ""path"": ""<Gamepad>/leftStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""navigate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fa74b2d6-ac9f-480e-a4ea-bde326016ddc"",
+                    ""path"": ""<Gamepad>/leftStick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""navigate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4dfb49de-eefc-4dd3-ba3c-d7f5564e9974"",
+                    ""path"": ""<Gamepad>/leftStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""navigate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8e64000b-a534-4759-b9b5-63d45fd5c8b4"",
+                    ""path"": ""<Gamepad>/leftStick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""navigate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""155bc636-0f10-4f29-8694-6cca0257fedc"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""navigate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ff249923-b24b-4e9a-9211-a274fa13802f"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""click"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -78,6 +162,8 @@ public partial class @SpecialControls: IInputActionCollection2, IDisposable
         m_controls = asset.FindActionMap("controls", throwIfNotFound: true);
         m_controls_pause = m_controls.FindAction("pause", throwIfNotFound: true);
         m_controls_dash = m_controls.FindAction("dash", throwIfNotFound: true);
+        m_controls_navigate = m_controls.FindAction("navigate", throwIfNotFound: true);
+        m_controls_click = m_controls.FindAction("click", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -141,12 +227,16 @@ public partial class @SpecialControls: IInputActionCollection2, IDisposable
     private List<IControlsActions> m_ControlsActionsCallbackInterfaces = new List<IControlsActions>();
     private readonly InputAction m_controls_pause;
     private readonly InputAction m_controls_dash;
+    private readonly InputAction m_controls_navigate;
+    private readonly InputAction m_controls_click;
     public struct ControlsActions
     {
         private @SpecialControls m_Wrapper;
         public ControlsActions(@SpecialControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @pause => m_Wrapper.m_controls_pause;
         public InputAction @dash => m_Wrapper.m_controls_dash;
+        public InputAction @navigate => m_Wrapper.m_controls_navigate;
+        public InputAction @click => m_Wrapper.m_controls_click;
         public InputActionMap Get() { return m_Wrapper.m_controls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -162,6 +252,12 @@ public partial class @SpecialControls: IInputActionCollection2, IDisposable
             @dash.started += instance.OnDash;
             @dash.performed += instance.OnDash;
             @dash.canceled += instance.OnDash;
+            @navigate.started += instance.OnNavigate;
+            @navigate.performed += instance.OnNavigate;
+            @navigate.canceled += instance.OnNavigate;
+            @click.started += instance.OnClick;
+            @click.performed += instance.OnClick;
+            @click.canceled += instance.OnClick;
         }
 
         private void UnregisterCallbacks(IControlsActions instance)
@@ -172,6 +268,12 @@ public partial class @SpecialControls: IInputActionCollection2, IDisposable
             @dash.started -= instance.OnDash;
             @dash.performed -= instance.OnDash;
             @dash.canceled -= instance.OnDash;
+            @navigate.started -= instance.OnNavigate;
+            @navigate.performed -= instance.OnNavigate;
+            @navigate.canceled -= instance.OnNavigate;
+            @click.started -= instance.OnClick;
+            @click.performed -= instance.OnClick;
+            @click.canceled -= instance.OnClick;
         }
 
         public void RemoveCallbacks(IControlsActions instance)
@@ -193,5 +295,7 @@ public partial class @SpecialControls: IInputActionCollection2, IDisposable
     {
         void OnPause(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
+        void OnNavigate(InputAction.CallbackContext context);
+        void OnClick(InputAction.CallbackContext context);
     }
 }
