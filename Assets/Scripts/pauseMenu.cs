@@ -12,7 +12,8 @@ public class pauseMenu : MonoBehaviour
     //This chunk includes all of the inports, booleans, and game objects that are required to make thi script run.
     SpecialControls controls;
 
-    public static bool isPaused =  false;
+    public bool isPaused =  false;
+    public bool justResumed = false;
 
     public bool mouseAct = false;
     public bool controllerAct = false;
@@ -101,8 +102,6 @@ public class pauseMenu : MonoBehaviour
     //If the escape key is clicked or the start button is pressed, then this activated paused mode
     private void pauseActivate()
     {
-
-        Debug.Log("pause.");
         if (isPaused)
         {
             resume();
@@ -118,9 +117,11 @@ public class pauseMenu : MonoBehaviour
     {
         pauseMenuUI.SetActive(false);
         optionsMenuUI.SetActive(false);
-        Time.timeScale = 1f;
         isPaused = false;
+        Time.timeScale = 1f;
+        justResumed = true;
         EventSystem.current.SetSelectedGameObject(null);
+
     }
 
     //this is the script that pauses the game: opening the menus, and stopping time
@@ -129,7 +130,10 @@ public class pauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         isPaused = true;
-        EventSystem.current.SetSelectedGameObject(pauseMenuFirstButton);
+        if (controllerAct == true)
+        {
+            EventSystem.current.SetSelectedGameObject(pauseMenuFirstButton);
+        }
     }
 
     //This is for when the options button is clicked: it opens the options menu and closes the pause menu
@@ -141,7 +145,10 @@ public class pauseMenu : MonoBehaviour
         optionsMenuUI.SetActive(true);
 
         EventSystem.current.SetSelectedGameObject(null);
-        EventSystem.current.SetSelectedGameObject(optionsMenuFirstButton);
+        if (controllerAct == true) 
+        {
+            EventSystem.current.SetSelectedGameObject(optionsMenuFirstButton);
+        }
     }
 
     //this is for when the options menu is closes: it opens the pause menu and closes the options
@@ -153,7 +160,10 @@ public class pauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(true);
 
         EventSystem.current.SetSelectedGameObject(null);
-        EventSystem.current.SetSelectedGameObject(pauseMenuFirstButton);
+        if (controllerAct == true)
+        {
+            EventSystem.current.SetSelectedGameObject(pauseMenuFirstButton);
+        }
     }
 
     //This is the quit button of the pause menu

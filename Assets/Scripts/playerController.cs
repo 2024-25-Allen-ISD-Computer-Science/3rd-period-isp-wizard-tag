@@ -9,6 +9,8 @@ public class playerController : MonoBehaviour
 {
     SpecialControls controls;
 
+    public pauseMenu pauseMenu;
+
     private float horizontal;
     public float speed;
     public float jumpingPower;
@@ -48,6 +50,12 @@ public class playerController : MonoBehaviour
         controls = new SpecialControls();
 
         controls.controls.dash.performed += ctx => activateDash();
+
+        /*if (pauseMenu == null)
+        {
+            pauseMenu = GameObject.FindObjectOfType<>
+        }*/
+
     }
 
     void OnEnable()
@@ -61,6 +69,12 @@ public class playerController : MonoBehaviour
     }
     void Update()
     {
+        if (pauseMenu.justResumed)
+        {
+            jumpBufferCounter = 0f;
+            pauseMenu.justResumed = false;
+            return;
+        }
 
         if (isDashing)
         {
@@ -218,10 +232,13 @@ public class playerController : MonoBehaviour
     {
         if (isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f)
         {
-            isFacingRight = !isFacingRight;
-            Vector3 localScale = transform.localScale;
-            localScale.x *= -1f;
-            transform.localScale = localScale;
+            if (!pauseMenu.isPaused)
+            {
+                isFacingRight = !isFacingRight;
+                Vector3 localScale = transform.localScale;
+                localScale.x *= -1f;
+                transform.localScale = localScale;
+            }
         }
     }
 

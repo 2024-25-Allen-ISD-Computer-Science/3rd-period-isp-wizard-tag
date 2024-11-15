@@ -2408,6 +2408,8 @@ MonoBehaviour:
   mainMenuFirstButton: {fileID: 339017349}
   optionsMenuFirstButton: {fileID: 1731706438}
   levelSelectMenuFirstButton: {fileID: 1674641346}
+  mouseAct: 0
+  controllerAct: 0
 --- !u!1 &1633897701
 GameObject:
   m_ObjectHideFlags: 0

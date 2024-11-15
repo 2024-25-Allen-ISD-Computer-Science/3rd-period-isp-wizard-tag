@@ -371,6 +371,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cea8d37558b1ecf4687352e31ab81288, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPaused: 0
+  justResumed: 0
+  mouseAct: 0
+  controllerAct: 0
   pauseMenuUI: {fileID: 272960946}
   optionsMenuUI: {fileID: 498322737}
   pauseMenuFirstButton: {fileID: 2548540}
@@ -1213,9 +1217,9 @@ GameObject:
   - component: {fileID: 96156507}
   - component: {fileID: 96156506}
   - component: {fileID: 96156505}
-  - component: {fileID: 96156509}
   - component: {fileID: 96156510}
   - component: {fileID: 96156511}
+  - component: {fileID: 96156509}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -1379,6 +1383,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 270fdae87af42ae4e84e35187f7da91f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pauseMenu: {fileID: 31393897}
   speed: 11
   jumpingPower: 18
   dashingPower: 35

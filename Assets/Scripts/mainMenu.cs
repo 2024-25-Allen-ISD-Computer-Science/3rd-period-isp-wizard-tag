@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 
 public class mainMenu : MonoBehaviour
 {
+    SpecialControls controls;
 
     public GameObject mainMenuUI;
     public GameObject optionsMenuUI;
@@ -16,13 +17,80 @@ public class mainMenu : MonoBehaviour
     public GameObject optionsMenuFirstButton;
     public GameObject levelSelectMenuFirstButton;
 
+    public bool mouseAct = false;
+    public bool controllerAct = false;
+
+    private void Awake()
+    {
+        controls = new SpecialControls();
+        controls.controls.navigate.performed += ctx => setControllerActive();
+        controls.controls.click.performed += ctx => setMouseActive();
+    }
+
+    //OnEnable enables the controller when it is used. 
+    void OnEnable()
+    {
+        controls.controls.Enable();
+    }
+
+    //OnDisable disables the controller when another action type is found. 
+    void OnDisable()
+    {
+        controls.controls.Disable();
+    }
+
+    //setControllerActive acrivates when navigation is detected from the controller
+    //If the controller is not active, and it become active in a menu,
+    //it will go to the first button of that menu.
+    void setControllerActive()
+    {
+        if (controllerAct == false)
+        {
+            if (mainMenuUI.activeSelf == true)
+            {
+                EventSystem.current.SetSelectedGameObject(null);
+                EventSystem.current.SetSelectedGameObject(mainMenuFirstButton);
+                controllerAct = true;
+                mouseAct = false;
+            }
+            else if (optionsMenuUI.activeSelf == true)
+            {
+                EventSystem.current.SetSelectedGameObject(null);
+                EventSystem.current.SetSelectedGameObject(optionsMenuFirstButton);
+                controllerAct = true;
+                mouseAct = false;
+            }
+            else if (levelSelectMenuUI.activeSelf == true)
+            {
+                EventSystem.current.SetSelectedGameObject(null);
+                EventSystem.current.SetSelectedGameObject(levelSelectMenuFirstButton);
+                controllerAct = true;
+                mouseAct = false;
+            }
+        }
+
+    }
+
+
+    //if the mouse becomes acive in the menu, then it will just allow the mouse to click. 
+    void setMouseActive()
+    {
+        if (mouseAct == false)
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+            controllerAct = false;
+            mouseAct = true;
+
+        }
+    }
+
     private void Start()
     {
         mainMenuUI.SetActive(true);
         optionsMenuUI.SetActive(false);
         levelSelectMenuUI.SetActive(false);
 
-        EventSystem.current.SetSelectedGameObject(mainMenuFirstButton);
+        /*EventSystem.current.SetSelectedGameObject(mainMenuFirstButton);*/
     }
 
 
@@ -32,7 +100,10 @@ public class mainMenu : MonoBehaviour
         levelSelectMenuUI.SetActive(true);
 
         EventSystem.current.SetSelectedGameObject(null);
-        EventSystem.current.SetSelectedGameObject(levelSelectMenuFirstButton);
+        if (controllerAct == true)
+        {
+            EventSystem.current.SetSelectedGameObject(levelSelectMenuFirstButton);
+        }
     }
 
     public void closeLevelSelect()
@@ -41,7 +112,10 @@ public class mainMenu : MonoBehaviour
         levelSelectMenuUI.SetActive(false);
 
         EventSystem.current.SetSelectedGameObject(null);
-        EventSystem.current.SetSelectedGameObject(mainMenuFirstButton);
+        if (controllerAct == true)
+        {
+            EventSystem.current.SetSelectedGameObject(mainMenuFirstButton);
+        }
     }
 
     public void openOptions()
@@ -50,7 +124,10 @@ public class mainMenu : MonoBehaviour
         optionsMenuUI.SetActive(true);
 
         EventSystem.current.SetSelectedGameObject(null);
-        EventSystem.current.SetSelectedGameObject(optionsMenuFirstButton);
+        if (controllerAct == true)
+        {
+            EventSystem.current.SetSelectedGameObject(optionsMenuFirstButton);
+        }
     }
 
     public void closeOptions()
@@ -60,7 +137,10 @@ public class mainMenu : MonoBehaviour
         mainMenuUI.SetActive(true);
 
         EventSystem.current.SetSelectedGameObject(null);
-        EventSystem.current.SetSelectedGameObject(mainMenuFirstButton);
+        if (controllerAct == true)
+        {
+            EventSystem.current.SetSelectedGameObject(mainMenuFirstButton);
+        }
     }
 
     public void PlayButton()
