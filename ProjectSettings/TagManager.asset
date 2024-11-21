@@ -16,7 +16,7 @@ TagManager:
   - Ground
   - Wall
   - Player
-  - 
+  - Lava Tileset
   - 
   - 
   - 
@@ -42,6 +42,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: FloorTilesets
+    uniqueID: 2840977171
     locked: 0
   - name: player
     uniqueID: 1169377183
