@@ -120,7 +120,8 @@ public class playerController : MonoBehaviour
         tr.emitting = false;
         rb.gravityScale = originalGravity;
         isDashing = false;
-        while (IsGrounded() == false) { 
+        while (IsGrounded() == false)
+        {
             yield return null;
         }
         canDash = true;
@@ -158,7 +159,7 @@ public class playerController : MonoBehaviour
             wallJumpingCounter = wallJumpingTime;
 
             CancelInvoke(nameof(stopWallJumping));
-        } 
+        }
         else
         {
             wallJumpingCounter -= Time.deltaTime;
@@ -192,10 +193,11 @@ public class playerController : MonoBehaviour
         if (isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f)
         {
             isFacingRight = !isFacingRight;
+
+            // Flip only direction, not size
             Vector3 localScale = transform.localScale;
-            localScale.x *= -1f;
+            localScale.x = Mathf.Abs(localScale.x) * (isFacingRight ? 1 : -1);
             transform.localScale = localScale;
         }
     }
-
 }
