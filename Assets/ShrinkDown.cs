@@ -29,7 +29,7 @@ public class ShrinkDown : PowerupEffect
             Mathf.Abs(originalScale.x) * shrinkScale.x,
             Mathf.Abs(originalScale.y) * shrinkScale.y,
             originalScale.z
-        ); // Ensure positive scale to avoid flipping direction
+        ); 
         player.speed *= speedBoostMultiplier;
 
         // Wait for the effect duration
