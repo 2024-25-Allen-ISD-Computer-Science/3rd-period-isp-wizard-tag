@@ -28,6 +28,15 @@ public partial class @SpecialControls: IInputActionCollection2, IDisposable
             ""id"": ""c2dea521-906d-455c-95ff-14562cb4d58a"",
             ""actions"": [
                 {
+                    ""name"": ""move"",
+                    ""type"": ""Value"",
+                    ""id"": ""9927ab2e-099c-4a8c-bdb0-93b5321ec535"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
                     ""name"": ""pause"",
                     ""type"": ""Button"",
                     ""id"": ""6e2b7149-f817-40db-9ec7-3c2aa5f71afb"",
@@ -62,6 +71,15 @@ public partial class @SpecialControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""jump"",
+                    ""type"": ""Button"",
+                    ""id"": ""0779a00c-67d4-414c-9b93-063a498d8dc4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -71,7 +89,7 @@ public partial class @SpecialControls: IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/start"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Controller"",
                     ""action"": ""pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -82,7 +100,7 @@ public partial class @SpecialControls: IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/buttonWest"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Controller"",
                     ""action"": ""dash"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -93,7 +111,7 @@ public partial class @SpecialControls: IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/leftStick/right"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Controller"",
                     ""action"": ""navigate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -104,7 +122,7 @@ public partial class @SpecialControls: IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/leftStick/down"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Controller"",
                     ""action"": ""navigate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -115,7 +133,7 @@ public partial class @SpecialControls: IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/leftStick/left"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Controller"",
                     ""action"": ""navigate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -126,7 +144,7 @@ public partial class @SpecialControls: IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/leftStick/up"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Controller"",
                     ""action"": ""navigate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -137,7 +155,7 @@ public partial class @SpecialControls: IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Controller"",
                     ""action"": ""navigate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -152,18 +170,65 @@ public partial class @SpecialControls: IInputActionCollection2, IDisposable
                     ""action"": ""click"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1e75ccc7-20ba-40bd-ae04-0cba3de68cac"",
+                    ""path"": ""<Gamepad>/leftStick/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""74f73da9-80c1-4673-8f93-a01d82d5e835"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
     ],
-    ""controlSchemes"": []
+    ""controlSchemes"": [
+        {
+            ""name"": ""Keyboard"",
+            ""bindingGroup"": ""Keyboard"",
+            ""devices"": [
+                {
+                    ""devicePath"": ""<Keyboard>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Controller"",
+            ""bindingGroup"": ""Controller"",
+            ""devices"": [
+                {
+                    ""devicePath"": ""<Gamepad>"",
+                    ""isOptional"": true,
+                    ""isOR"": false
+                }
+            ]
+        }
+    ]
 }");
         // controls
         m_controls = asset.FindActionMap("controls", throwIfNotFound: true);
+        m_controls_move = m_controls.FindAction("move", throwIfNotFound: true);
         m_controls_pause = m_controls.FindAction("pause", throwIfNotFound: true);
         m_controls_dash = m_controls.FindAction("dash", throwIfNotFound: true);
         m_controls_navigate = m_controls.FindAction("navigate", throwIfNotFound: true);
         m_controls_click = m_controls.FindAction("click", throwIfNotFound: true);
+        m_controls_jump = m_controls.FindAction("jump", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -225,18 +290,22 @@ public partial class @SpecialControls: IInputActionCollection2, IDisposable
     // controls
     private readonly InputActionMap m_controls;
     private List<IControlsActions> m_ControlsActionsCallbackInterfaces = new List<IControlsActions>();
+    private readonly InputAction m_controls_move;
     private readonly InputAction m_controls_pause;
     private readonly InputAction m_controls_dash;
     private readonly InputAction m_controls_navigate;
     private readonly InputAction m_controls_click;
+    private readonly InputAction m_controls_jump;
     public struct ControlsActions
     {
         private @SpecialControls m_Wrapper;
         public ControlsActions(@SpecialControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @move => m_Wrapper.m_controls_move;
         public InputAction @pause => m_Wrapper.m_controls_pause;
         public InputAction @dash => m_Wrapper.m_controls_dash;
         public InputAction @navigate => m_Wrapper.m_controls_navigate;
         public InputAction @click => m_Wrapper.m_controls_click;
+        public InputAction @jump => m_Wrapper.m_controls_jump;
         public InputActionMap Get() { return m_Wrapper.m_controls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -246,6 +315,9 @@ public partial class @SpecialControls: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_ControlsActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_ControlsActionsCallbackInterfaces.Add(instance);
+            @move.started += instance.OnMove;
+            @move.performed += instance.OnMove;
+            @move.canceled += instance.OnMove;
             @pause.started += instance.OnPause;
             @pause.performed += instance.OnPause;
             @pause.canceled += instance.OnPause;
@@ -258,10 +330,16 @@ public partial class @SpecialControls: IInputActionCollection2, IDisposable
             @click.started += instance.OnClick;
             @click.performed += instance.OnClick;
             @click.canceled += instance.OnClick;
+            @jump.started += instance.OnJump;
+            @jump.performed += instance.OnJump;
+            @jump.canceled += instance.OnJump;
         }
 
         private void UnregisterCallbacks(IControlsActions instance)
         {
+            @move.started -= instance.OnMove;
+            @move.performed -= instance.OnMove;
+            @move.canceled -= instance.OnMove;
             @pause.started -= instance.OnPause;
             @pause.performed -= instance.OnPause;
             @pause.canceled -= instance.OnPause;
@@ -274,6 +352,9 @@ public partial class @SpecialControls: IInputActionCollection2, IDisposable
             @click.started -= instance.OnClick;
             @click.performed -= instance.OnClick;
             @click.canceled -= instance.OnClick;
+            @jump.started -= instance.OnJump;
+            @jump.performed -= instance.OnJump;
+            @jump.canceled -= instance.OnJump;
         }
 
         public void RemoveCallbacks(IControlsActions instance)
@@ -291,11 +372,31 @@ public partial class @SpecialControls: IInputActionCollection2, IDisposable
         }
     }
     public ControlsActions @controls => new ControlsActions(this);
+    private int m_KeyboardSchemeIndex = -1;
+    public InputControlScheme KeyboardScheme
+    {
+        get
+        {
+            if (m_KeyboardSchemeIndex == -1) m_KeyboardSchemeIndex = asset.FindControlSchemeIndex("Keyboard");
+            return asset.controlSchemes[m_KeyboardSchemeIndex];
+        }
+    }
+    private int m_ControllerSchemeIndex = -1;
+    public InputControlScheme ControllerScheme
+    {
+        get
+        {
+            if (m_ControllerSchemeIndex == -1) m_ControllerSchemeIndex = asset.FindControlSchemeIndex("Controller");
+            return asset.controlSchemes[m_ControllerSchemeIndex];
+        }
+    }
     public interface IControlsActions
     {
+        void OnMove(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
         void OnNavigate(InputAction.CallbackContext context);
         void OnClick(InputAction.CallbackContext context);
+        void OnJump(InputAction.CallbackContext context);
     }
 }

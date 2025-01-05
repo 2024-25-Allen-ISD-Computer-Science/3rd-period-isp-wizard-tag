@@ -19,7 +19,7 @@ public class playerController : MonoBehaviour
     private float coyoteTime = 0.2f;
     private float coyoteTimeCounter;
 
-    private float jumpBuffer = 0.2f;
+    private float jumpBuffer = 0.1f;
     private float jumpBufferCounter;
 
     private bool canDash = true;
@@ -69,10 +69,15 @@ public class playerController : MonoBehaviour
     }
     void Update()
     {
-        if (pauseMenu.justResumed)
+        if (pauseMenu.sharedInstance != null && pauseMenu.sharedInstance.isPaused)
+        {
+            return; // Do nothing if the game is paused
+        }
+
+        if (pauseMenu.sharedInstance != null && pauseMenu.sharedInstance.justResumed)
         {
             jumpBufferCounter = 0f;
-            pauseMenu.justResumed = false;
+            pauseMenu.sharedInstance.justResumed = false;
             return;
         }
 
@@ -90,7 +95,7 @@ public class playerController : MonoBehaviour
             coyoteTimeCounter -= Time.deltaTime;
         }
 
-        if (Input.GetButtonDown("Jump"))
+        if (controls.controls.jump.triggered)
         {
             jumpBufferCounter = jumpBuffer;
         }
@@ -99,7 +104,7 @@ public class playerController : MonoBehaviour
             jumpBufferCounter -= Time.deltaTime;
         }
 
-        horizontal = Input.GetAxisRaw("Horizontal");
+        horizontal = controls.controls.move.ReadValue<float>();
 
         if (jumpBufferCounter > 0f && coyoteTimeCounter > 0f)
         {
@@ -107,14 +112,14 @@ public class playerController : MonoBehaviour
             jumpBufferCounter = 0f;
         }
 
-        if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
+        if (controls.controls.jump.phase == InputActionPhase.Canceled && rb.velocity.y > 0f)
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
 
             coyoteTimeCounter = 0f;
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
+        if (controls.controls.dash.triggered && canDash)
         {
             StartCoroutine(Dash());
         }
@@ -205,7 +210,7 @@ public class playerController : MonoBehaviour
             wallJumpingCounter -= Time.deltaTime;
         }
 
-        if (Input.GetButtonDown("Jump") && wallJumpingCounter > 0f)
+        if (controls.controls.jump.triggered && wallJumpingCounter > 0f)
         {
             isWallJumping = true;
             rb.velocity = new Vector2(wallJumpingDirrection * wallJumpingPower.x, wallJumpingPower.y);
@@ -232,13 +237,10 @@ public class playerController : MonoBehaviour
     {
         if (isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f)
         {
-            if (!pauseMenu.isPaused)
-            {
-                isFacingRight = !isFacingRight;
-                Vector3 localScale = transform.localScale;
-                localScale.x *= -1f;
-                transform.localScale = localScale;
-            }
+            isFacingRight = !isFacingRight;
+            Vector3 localScale = transform.localScale;
+            localScale.x *= -1f;
+            transform.localScale = localScale;
         }
     }
 
