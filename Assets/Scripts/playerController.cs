@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 
 public class playerController : MonoBehaviour
 {
-    SpecialControls controls;
+    private SpecialControls controls;
 
     public pauseMenu pauseMenu;
 
@@ -38,6 +38,9 @@ public class playerController : MonoBehaviour
     public float wallJumpingDuration;
     private Vector2 wallJumpingPower = new Vector2(9f, 18f);
 
+    private PlayerInput playerInput; // Reference to Player Input
+    private InputActionMap assignedActionMap; // Action map assigned to this player
+
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
@@ -47,64 +50,53 @@ public class playerController : MonoBehaviour
 
     private void Awake()
     {
-        controls = new SpecialControls();
 
-        controls.controls.dash.performed += ctx => activateDash();
+        playerInput = GetComponent<PlayerInput>();
 
-        /*if (pauseMenu == null)
-        {
-            pauseMenu = GameObject.FindObjectOfType<>
-        }*/
+        // Assign the action map dynamically from PlayerInput
+        assignedActionMap = playerInput.currentActionMap;
+        assignedActionMap.Enable();
+
+        Debug.Log($"Player {playerInput.playerIndex} joined with action map: {assignedActionMap.name}");
+
+
+        // Set the appropriate action map
+        assignedActionMap.Enable();
+
+        Debug.Log($"Player {playerInput.playerIndex} using action map: {assignedActionMap}");
 
     }
 
     void OnEnable()
     {
-        controls.controls.Enable();
+        assignedActionMap?.Enable();
     }
 
     void OnDisable()
     {
-        controls.controls.Disable();
+        assignedActionMap?.Disable();
     }
     void Update()
     {
-        if (pauseMenu.sharedInstance != null && pauseMenu.sharedInstance.isPaused)
-        {
-            return; // Do nothing if the game is paused
-        }
+        // Access static member with the class name
+        if (pauseMenu.sharedInstance?.isPaused == true) return;
 
-        if (pauseMenu.sharedInstance != null && pauseMenu.sharedInstance.justResumed)
+        if (pauseMenu.sharedInstance?.justResumed == true)
         {
             jumpBufferCounter = 0f;
             pauseMenu.sharedInstance.justResumed = false;
             return;
         }
 
-        if (isDashing)
-        {
-            return;
-        }
+        if (isDashing) return;
 
-        if (IsGrounded())
-        {
-            coyoteTimeCounter = coyoteTime;
-        }
-        else
-        {
-            coyoteTimeCounter -= Time.deltaTime;
-        }
+        if (IsGrounded()) coyoteTimeCounter = coyoteTime;
+        else coyoteTimeCounter -= Time.deltaTime;
 
-        if (controls.controls.jump.triggered)
-        {
-            jumpBufferCounter = jumpBuffer;
-        }
-        else
-        {
-            jumpBufferCounter -= Time.deltaTime;
-        }
+        if (playerInput.actions["jump"].triggered) jumpBufferCounter = jumpBuffer;
+        else jumpBufferCounter -= Time.deltaTime;
 
-        horizontal = controls.controls.move.ReadValue<float>();
+        horizontal = playerInput.actions["move"].ReadValue<float>();
 
         if (jumpBufferCounter > 0f && coyoteTimeCounter > 0f)
         {
@@ -112,26 +104,22 @@ public class playerController : MonoBehaviour
             jumpBufferCounter = 0f;
         }
 
-        if (controls.controls.jump.phase == InputActionPhase.Canceled && rb.velocity.y > 0f)
+        if (playerInput.actions["jump"].phase == InputActionPhase.Canceled && rb.velocity.y > 0f)
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
-
             coyoteTimeCounter = 0f;
         }
 
-        if (controls.controls.dash.triggered && canDash)
+        if (playerInput.actions["dash"].triggered && canDash)
         {
             StartCoroutine(Dash());
         }
 
         wallSlide();
         wallJump();
-
-        if (!isWallJumping)
-        {
-            Flip();
-        }
+        if (!isWallJumping) Flip();
     }
+
 
     private void FixedUpdate()
     {
@@ -210,7 +198,7 @@ public class playerController : MonoBehaviour
             wallJumpingCounter -= Time.deltaTime;
         }
 
-        if (controls.controls.jump.triggered && wallJumpingCounter > 0f)
+        if (assignedActionMap["jump"].triggered && wallJumpingCounter > 0f)
         {
             isWallJumping = true;
             rb.velocity = new Vector2(wallJumpingDirrection * wallJumpingPower.x, wallJumpingPower.y);

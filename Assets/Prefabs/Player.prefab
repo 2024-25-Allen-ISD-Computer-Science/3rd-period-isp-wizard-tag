@@ -338,7 +338,7 @@ TrailRenderer:
   m_SortingLayerID: 1169377183
   m_SortingLayer: 2
   m_SortingOrder: -1
-  m_Time: 0.3
+  m_Time: 0.39
   m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3
@@ -347,22 +347,22 @@ TrailRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0.05736138
-        value: 0.16115701
-        inSlope: 0.34123534
-        outSlope: 0.34123534
+        time: 0.049957052
+        value: 0.2875303
+        inSlope: -0.10501094
+        outSlope: -0.10501094
         tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
-        outWeight: 0.077079095
+        outWeight: 0.23850095
       - serializedVersion: 3
         time: 1
         value: 0
-        inSlope: -0.043488454
-        outSlope: -0.043488454
+        inSlope: -0.6428572
+        outSlope: -0.6428572
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0.10316686
+        inWeight: 0.11695377
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -488,7 +488,55 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 0779a00c-67d4-414c-9b93-063a498d8dc4
     m_ActionName: controls/jump[/XInputControllerWindows/buttonSouth]
-  m_NeverAutoSwitchControlSchemes: 1
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: fd3e69e9-c5ec-46cf-b8b9-789b5e3b2023
+    m_ActionName: controls/move[/XInputControllerWindows/leftStick/x,/XInputControllerWindows1/leftStick/x]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4f5435c4-7b5e-4172-b575-defed563365b
+    m_ActionName: controls/pause[/XInputControllerWindows/start,/XInputControllerWindows1/start,/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: d697141c-5d90-4383-8a57-e19ce7c73525
+    m_ActionName: controls/dash[/XInputControllerWindows/buttonWest,/XInputControllerWindows1/buttonWest]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0d0699ea-de11-4a9a-b8ae-a46bc4505921
+    m_ActionName: controls/navigate[/XInputControllerWindows/leftStick/right,/XInputControllerWindows1/leftStick/right,/XInputControllerWindows/leftStick/down,/XInputControllerWindows1/leftStick/down,/XInputControllerWindows/leftStick/left,/XInputControllerWindows1/leftStick/left,/XInputControllerWindows/leftStick/up,/XInputControllerWindows1/leftStick/up,/XInputControllerWindows/buttonSouth,/XInputControllerWindows1/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: de966638-2a20-4fea-8a3e-e7429aa04216
+    m_ActionName: controls/click[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 7d20fa30-129d-4279-9bd3-8f8ec0c5b262
+    m_ActionName: controls/jump[/XInputControllerWindows/buttonSouth,/XInputControllerWindows1/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 7d080540-ca71-4617-87eb-4b51ab9c9e67
+    m_ActionName: controlsP2/move[/XInputControllerWindows/leftStick/x,/XInputControllerWindows1/leftStick/x]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3e25765c-1dc6-40df-9ae6-ced5c69c8c8b
+    m_ActionName: controlsP2/pause[/XInputControllerWindows/start,/XInputControllerWindows1/start,/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f18d3dce-15e0-4015-bde9-d24a814fe7e5
+    m_ActionName: controlsP2/dash[/XInputControllerWindows/buttonWest,/XInputControllerWindows1/buttonWest]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 75d9ec34-6c35-4205-8cfc-6e268ce04389
+    m_ActionName: controlsP2/navigate[/XInputControllerWindows/leftStick/right,/XInputControllerWindows1/leftStick/right,/XInputControllerWindows/leftStick/down,/XInputControllerWindows1/leftStick/down,/XInputControllerWindows/leftStick/left,/XInputControllerWindows1/leftStick/left,/XInputControllerWindows/leftStick/up,/XInputControllerWindows1/leftStick/up,/XInputControllerWindows/buttonSouth,/XInputControllerWindows1/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c45bb650-8908-407c-8756-91fd599b0eb8
+    m_ActionName: controlsP2/click[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 47aa4579-560d-4b52-be57-8418eabca417
+    m_ActionName: controlsP2/jump[/XInputControllerWindows/buttonSouth,/XInputControllerWindows1/buttonSouth]
+  m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: controls
   m_SplitScreenIndex: -1

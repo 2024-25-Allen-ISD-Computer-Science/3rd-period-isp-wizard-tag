@@ -20,6 +20,9 @@ public class mainMenu : MonoBehaviour
     public bool mouseAct = false;
     public bool controllerAct = false;
 
+    private PlayerInput playerInput; // Reference to PlayerInput component
+    private string assignedActionMap; // Assigned action map for this player
+
     private void Awake()
     {
         controls = new SpecialControls();
