@@ -174,6 +174,8 @@ public class pauseMenu : MonoBehaviour
     //it changes the scene to the main menu and closes the game. 
     public void quit()
     {
+        PlayerDataManager.ResetAssignedGamepads();
+
         SceneManager.LoadScene(0);
         resume();
     }

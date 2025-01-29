@@ -77,6 +77,9 @@ public class JoinPlayerMenu : MonoBehaviour
         playButton.interactable = false;
         backButton.interactable = false;
         inputEnabled = false;
+
+        PlayerDataManager.ResetAssignedGamepads();
+
         Debug.Log("Players reset.");
         StartCoroutine(WaitToResetPlayers());
     }
