@@ -11,14 +11,19 @@ public class mainMenu : MonoBehaviour
 
     public GameObject mainMenuUI;
     public GameObject optionsMenuUI;
+    public GameObject PlayerJoinMenuUI;
     public GameObject levelSelectMenuUI;
 
     public GameObject mainMenuFirstButton;
     public GameObject optionsMenuFirstButton;
+    public GameObject playerJoinMenuFirstButton;
     public GameObject levelSelectMenuFirstButton;
 
     public bool mouseAct = false;
     public bool controllerAct = false;
+
+    private PlayerInput playerInput; // Reference to PlayerInput component
+    private string assignedActionMap; // Assigned action map for this player
 
     private void Awake()
     {
@@ -60,6 +65,13 @@ public class mainMenu : MonoBehaviour
                 controllerAct = true;
                 mouseAct = false;
             }
+            else if (PlayerJoinMenuUI.activeSelf == true)
+            {
+                EventSystem.current.SetSelectedGameObject(null);
+                EventSystem.current.SetSelectedGameObject(playerJoinMenuFirstButton);
+                controllerAct = true;
+                mouseAct = false;
+            }
             else if (levelSelectMenuUI.activeSelf == true)
             {
                 EventSystem.current.SetSelectedGameObject(null);
@@ -93,10 +105,33 @@ public class mainMenu : MonoBehaviour
         /*EventSystem.current.SetSelectedGameObject(mainMenuFirstButton);*/
     }
 
+    public void openPlayerJoin()
+    {
+        mainMenuUI.SetActive(false);
+        PlayerJoinMenuUI.SetActive(true);
+
+        EventSystem.current.SetSelectedGameObject(null);
+        if (controllerAct == true)
+        {
+            EventSystem.current.SetSelectedGameObject(playerJoinMenuFirstButton);
+        }
+    }
+
+    public void closePlayerJoin()
+    {
+        mainMenuUI.SetActive(true);
+        PlayerJoinMenuUI.SetActive(false);
+
+        EventSystem.current.SetSelectedGameObject(null);
+        if (controllerAct == true)
+        {
+            EventSystem.current.SetSelectedGameObject(mainMenuFirstButton);
+        }
+    }
 
     public void openLevelSelect()
     {
-        mainMenuUI.SetActive(false);
+        PlayerJoinMenuUI.SetActive(false);
         levelSelectMenuUI.SetActive(true);
 
         EventSystem.current.SetSelectedGameObject(null);
@@ -108,13 +143,13 @@ public class mainMenu : MonoBehaviour
 
     public void closeLevelSelect()
     {
-        mainMenuUI.SetActive(true);
+        PlayerJoinMenuUI.SetActive(true);
         levelSelectMenuUI.SetActive(false);
 
         EventSystem.current.SetSelectedGameObject(null);
         if (controllerAct == true)
         {
-            EventSystem.current.SetSelectedGameObject(mainMenuFirstButton);
+            EventSystem.current.SetSelectedGameObject(playerJoinMenuFirstButton);
         }
     }
 

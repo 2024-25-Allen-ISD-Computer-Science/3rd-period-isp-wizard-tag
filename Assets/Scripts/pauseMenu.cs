@@ -12,6 +12,8 @@ public class pauseMenu : MonoBehaviour
     //This chunk includes all of the inports, booleans, and game objects that are required to make thi script run.
     SpecialControls controls;
 
+    public static pauseMenu sharedInstance;
+
     public bool isPaused =  false;
     public bool justResumed = false;
 
@@ -33,6 +35,8 @@ public class pauseMenu : MonoBehaviour
         controls.controls.pause.performed += ctx => pauseActivate();
         controls.controls.navigate.performed += ctx => setControllerActive();
         controls.controls.click.performed += ctx => setMouseActive();
+
+        sharedInstance = this;
     }
 
     //OnEnable enables the controller when it is used. 
@@ -170,6 +174,8 @@ public class pauseMenu : MonoBehaviour
     //it changes the scene to the main menu and closes the game. 
     public void quit()
     {
+        PlayerDataManager.ResetAssignedGamepads();
+
         SceneManager.LoadScene(0);
         resume();
     }
