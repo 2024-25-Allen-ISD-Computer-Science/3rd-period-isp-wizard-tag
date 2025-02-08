@@ -43,9 +43,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: BackGround Decorations 1
+    uniqueID: 2248847405
+    locked: 0
   - name: FloorTilesets
     uniqueID: 2840977171
     locked: 0
   - name: player
     uniqueID: 1169377183
+    locked: 0
+  - name: Torches
+    uniqueID: 310909257
     locked: 0

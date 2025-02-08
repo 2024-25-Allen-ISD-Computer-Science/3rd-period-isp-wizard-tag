@@ -71,7 +71,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1169377183
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: abcfad5151ccd2e4e8e72a81be5641c0, type: 3}
   m_Color: {r: 0.6132076, g: 0.6132076, b: 0.6132076, a: 1}
@@ -147,7 +147,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: f6f7dc9b1a166364a9718f44cc70f7d2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -166,7 +166,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1169377183
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: abcfad5151ccd2e4e8e72a81be5641c0, type: 3}
   m_Color: {r: 0.3584906, g: 0.3584906, b: 0.3584906, a: 1}
@@ -336,7 +336,7 @@ TrailRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1169377183
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: -1
   m_Time: 0.39
   m_PreviewTimeScale: 1
@@ -466,30 +466,6 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 9927ab2e-099c-4a8c-bdb0-93b5321ec535
-    m_ActionName: controls/move[/XInputControllerWindows/leftStick/x]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 6e2b7149-f817-40db-9ec7-3c2aa5f71afb
-    m_ActionName: controls/pause[/XInputControllerWindows/start]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: bef9e4d7-d1cc-4a91-be01-329d7128b630
-    m_ActionName: controls/dash[/XInputControllerWindows/buttonWest]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 90068a6f-5f31-4d22-a281-0becd9f6695a
-    m_ActionName: controls/navigate[/XInputControllerWindows/leftStick/right,/XInputControllerWindows/leftStick/down,/XInputControllerWindows/leftStick/left,/XInputControllerWindows/leftStick/up,/XInputControllerWindows/buttonSouth]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 640b86d8-a652-466c-9350-1f5350822301
-    m_ActionName: controls/click[/Mouse/leftButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 0779a00c-67d4-414c-9b93-063a498d8dc4
-    m_ActionName: controls/jump[/XInputControllerWindows/buttonSouth]
-  - m_PersistentCalls:
-      m_Calls: []
     m_ActionId: fd3e69e9-c5ec-46cf-b8b9-789b5e3b2023
     m_ActionName: controls/move[/XInputControllerWindows/leftStick/x,/XInputControllerWindows1/leftStick/x]
   - m_PersistentCalls:
@@ -512,30 +488,6 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 7d20fa30-129d-4279-9bd3-8f8ec0c5b262
     m_ActionName: controls/jump[/XInputControllerWindows/buttonSouth,/XInputControllerWindows1/buttonSouth]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 7d080540-ca71-4617-87eb-4b51ab9c9e67
-    m_ActionName: controlsP2/move[/XInputControllerWindows/leftStick/x,/XInputControllerWindows1/leftStick/x]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 3e25765c-1dc6-40df-9ae6-ced5c69c8c8b
-    m_ActionName: controlsP2/pause[/XInputControllerWindows/start,/XInputControllerWindows1/start,/Keyboard/escape]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: f18d3dce-15e0-4015-bde9-d24a814fe7e5
-    m_ActionName: controlsP2/dash[/XInputControllerWindows/buttonWest,/XInputControllerWindows1/buttonWest]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 75d9ec34-6c35-4205-8cfc-6e268ce04389
-    m_ActionName: controlsP2/navigate[/XInputControllerWindows/leftStick/right,/XInputControllerWindows1/leftStick/right,/XInputControllerWindows/leftStick/down,/XInputControllerWindows1/leftStick/down,/XInputControllerWindows/leftStick/left,/XInputControllerWindows1/leftStick/left,/XInputControllerWindows/leftStick/up,/XInputControllerWindows1/leftStick/up,/XInputControllerWindows/buttonSouth,/XInputControllerWindows1/buttonSouth]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: c45bb650-8908-407c-8756-91fd599b0eb8
-    m_ActionName: controlsP2/click[/Mouse/leftButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 47aa4579-560d-4b52-be57-8418eabca417
-    m_ActionName: controlsP2/jump[/XInputControllerWindows/buttonSouth,/XInputControllerWindows1/buttonSouth]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: controls
@@ -643,7 +595,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1169377183
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: e336e74eaa177f24b8d93627776e750a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -727,7 +679,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1169377183
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: e336e74eaa177f24b8d93627776e750a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

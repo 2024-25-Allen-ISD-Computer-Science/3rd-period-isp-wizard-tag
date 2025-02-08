@@ -59,7 +59,7 @@ public class JoinPlayerMenu : MonoBehaviour
             }
         }
 
-        if (playerJoined[0] && playerJoined[1])
+        if (playerJoined[0] /*&& playerJoined[1]*/)
         {
             playButton.interactable = true;
             backButton.interactable = true;
