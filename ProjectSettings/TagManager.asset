@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ground
   - Boost
+  - Pointer
   layers:
   - Default
   - TransparentFX
@@ -43,6 +44,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: BackGround Decorations 2
+    uniqueID: 1392125683
+    locked: 0
   - name: BackGround Decorations 1
     uniqueID: 2248847405
     locked: 0
@@ -54,4 +58,7 @@ TagManager:
     locked: 0
   - name: Torches
     uniqueID: 310909257
+    locked: 0
+  - name: GameplayerOverlays
+    uniqueID: 968276219
     locked: 0
