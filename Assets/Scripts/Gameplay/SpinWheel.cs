@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.InputSystem;
 
 using System.Collections;
 using System.Collections.Generic;
@@ -13,9 +14,12 @@ using UnityEngine.Rendering;
 using UnityEngine.UIElements;
 
 using Color = UnityEngine.Color;
+using UnityEditor.ShaderGraph;
 
 public class SpinWheel : MonoBehaviour
 {
+    private SpecialControls controls;
+
     public GameObject Pointer;
     public GameObject TwoPWheel;
     public GameObject ThreePWheel;
@@ -36,6 +40,9 @@ public class SpinWheel : MonoBehaviour
     public float maxSpd = 500f;
     public float slowDownSpd = 2f;
 
+    private bool spinTriggered = false;
+
+
 
     private void Start()
     {
@@ -44,7 +51,13 @@ public class SpinWheel : MonoBehaviour
         ThreePWheel.SetActive(false);
         FourPWheel.SetActive(false);
 
-        startMatch();
+        if (playerCount != 1) {
+            startMatch();
+        }
+        else
+        {
+            playersCanMove = true;
+        }
     }
     public void startMatch()
     {
@@ -56,7 +69,6 @@ public class SpinWheel : MonoBehaviour
         {
             TwoPWheel.SetActive(true);
             activeWheel = TwoPWheel;
-            spin();
         }
         else if (playerCount == 3)
         {
@@ -71,6 +83,28 @@ public class SpinWheel : MonoBehaviour
         else
         {
             activeWheel = null;
+        }
+
+        StartCoroutine(WaitForSpinInput());
+    }
+
+    private IEnumerator WaitForSpinInput()
+    {
+        spinTriggered = false;
+        Debug.Log("Press A to spin the wheel...");
+
+        while (!spinTriggered)
+        {
+            foreach (Gamepad gamepad in Gamepad.all)
+            {
+                if (gamepad.buttonSouth.wasPressedThisFrame) // "A" Button
+                {
+                    spinTriggered = true;
+                    spin();
+                    break;
+                }
+            }
+            yield return null;
         }
     }
 
@@ -103,23 +137,23 @@ public class SpinWheel : MonoBehaviour
 
             if (hitPoint == "Red")
             {
-                Debug.Log("Player 1 is it!");
+                Debug.Log("Player 0 is it!");
                 PlayerDataManager.taggedPlayer = 0;
 
             }
             else if (hitPoint == "Blue")
             {
-                Debug.Log("Player 2 is it!");
+                Debug.Log("Player 1 is it!");
                 PlayerDataManager.taggedPlayer = 1;
             }
             else if (hitPoint == "Green")
             {
-                Debug.Log("Player 3 is it!");
+                Debug.Log("Player 2 is it!");
                 PlayerDataManager.taggedPlayer = 2;
             }
             else
             {
-                Debug.Log("Player 4 is it!");
+                Debug.Log("Player 3 is it!");
                 PlayerDataManager.taggedPlayer = 3;
             }
         }

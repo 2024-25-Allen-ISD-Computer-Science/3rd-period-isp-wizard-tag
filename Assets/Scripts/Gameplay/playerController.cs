@@ -79,7 +79,7 @@ public class playerController : MonoBehaviour
     void Update()
     {
         // Access static member with the class name
-        if (pauseMenu.sharedInstance?.isPaused == true || SpinWheel.isSpinning) return;
+        if (pauseMenu.sharedInstance?.isPaused == true || !SpinWheel.playersCanMove) return;
 
         if (pauseMenu.sharedInstance?.justResumed == true)
         {
