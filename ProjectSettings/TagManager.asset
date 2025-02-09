@@ -7,6 +7,10 @@ TagManager:
   - Ground
   - Boost
   - Pointer
+  - Red
+  - Blue
+  - Green
+  - Yellow
   layers:
   - Default
   - TransparentFX

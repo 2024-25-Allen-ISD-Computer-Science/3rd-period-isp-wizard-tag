@@ -502,7 +502,7 @@ GameObject:
   - component: {fileID: 42251170}
   m_Layer: 0
   m_Name: Red Collider
-  m_TagString: Untagged
+  m_TagString: Red
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36570,7 +36570,7 @@ GameObject:
   - component: {fileID: 543634158}
   m_Layer: 0
   m_Name: Red Collider
-  m_TagString: Untagged
+  m_TagString: Red
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36914,7 +36914,7 @@ GameObject:
   - component: {fileID: 570685667}
   m_Layer: 0
   m_Name: Green Collider
-  m_TagString: Untagged
+  m_TagString: Green
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -38416,7 +38416,7 @@ GameObject:
   - component: {fileID: 781438938}
   m_Layer: 0
   m_Name: Blue Collider
-  m_TagString: Untagged
+  m_TagString: Blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -39753,7 +39753,9 @@ MonoBehaviour:
   - {fileID: 570685665}
   yellowCollider: {fileID: 1854512495}
   backgroundDarken: {fileID: 1386720948}
-  playersCanMove: 0
+  spinSpd: 0
+  maxSpd: 500
+  slowDownSpd: 100
 --- !u!1 &1196285703
 GameObject:
   m_ObjectHideFlags: 0
@@ -40365,7 +40367,7 @@ GameObject:
   - component: {fileID: 1258839234}
   m_Layer: 0
   m_Name: Green Collider
-  m_TagString: Untagged
+  m_TagString: Green
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -41806,7 +41808,7 @@ GameObject:
   - component: {fileID: 1413267544}
   m_Layer: 0
   m_Name: Blue Collider
-  m_TagString: Untagged
+  m_TagString: Blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -42016,7 +42018,7 @@ GameObject:
   - component: {fileID: 1420950277}
   m_Layer: 0
   m_Name: Red Collider
-  m_TagString: Untagged
+  m_TagString: Red
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47793,7 +47795,7 @@ GameObject:
   - component: {fileID: 1854512497}
   m_Layer: 0
   m_Name: Yellow Collider
-  m_TagString: Untagged
+  m_TagString: Yellow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -49722,7 +49724,7 @@ GameObject:
   - component: {fileID: 2077603704}
   m_Layer: 0
   m_Name: Blue Collider
-  m_TagString: Untagged
+  m_TagString: Blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
