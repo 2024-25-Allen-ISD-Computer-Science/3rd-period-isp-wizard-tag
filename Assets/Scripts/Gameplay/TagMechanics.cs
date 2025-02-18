@@ -39,12 +39,13 @@ public class TagMechanics : MonoBehaviour
             Debug.Log("Players are touching");
             var otherPlayer = other.GetComponent<TagMechanics>();
 
-            if (isTagged != otherPlayer.isTagged)
+            if (isTagged && canTag &&!otherPlayer.isTagged)
             {
                 canTag = false;
                 otherPlayer.canTag = false;
 
                 StartCoroutine(canTagAfterDelay());
+                StartCoroutine(otherPlayer.canTagAfterDelay());
 
                 isTagged = false;
                 PlayerDataManager.taggedPlayer = otherPlayer.playerIndex;
@@ -56,7 +57,9 @@ public class TagMechanics : MonoBehaviour
 
     private IEnumerator canTagAfterDelay()
     {
+        Debug.Log("starting timer");
         yield return new WaitForSeconds(tageTimeBuffer);
+        Debug.Log("ending timer");
         canTag = true; // Enable tagging
     }
 
