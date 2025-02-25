@@ -32,7 +32,7 @@ public class SpinWheel : MonoBehaviour
     public GameObject yellowCollider;
     public GameObject backgroundDarken;
 
-    private int playerCount = PlayerDataManager.AssignedGamepads.Count;
+    private int playerCount = PlayerDataManager.AssignedPlayers.Count;
     public static bool playersCanMove = false;
 
     public static bool isSpinning = false;
@@ -97,7 +97,7 @@ public class SpinWheel : MonoBehaviour
         {
             foreach (Gamepad gamepad in Gamepad.all)
             {
-                if (gamepad.buttonSouth.wasPressedThisFrame) // "A" Button
+                if (gamepad.buttonSouth.wasPressedThisFrame || Keyboard.current.spaceKey.wasPressedThisFrame) // "A" Button
                 {
                     spinTriggered = true;
                     spin();
@@ -110,7 +110,7 @@ public class SpinWheel : MonoBehaviour
 
     private void spin()
     {
-        spinSpd = Random.Range(maxSpd * 0.8f, maxSpd);
+        spinSpd = Random.Range(maxSpd * 0.5f, maxSpd * 1.2f);
         isSpinning = true;
         StartCoroutine(WheelSpin());
     }
@@ -151,10 +151,15 @@ public class SpinWheel : MonoBehaviour
                 Debug.Log("Player 2 is it!");
                 PlayerDataManager.taggedPlayer = 2;
             }
-            else
+            else if (hitPoint == "Yellow")
             {
                 Debug.Log("Player 3 is it!");
                 PlayerDataManager.taggedPlayer = 3;
+            }
+            else
+            {
+                Debug.Log("Defaulting to P0");
+                PlayerDataManager.taggedPlayer = 0;
             }
         }
 
@@ -162,6 +167,9 @@ public class SpinWheel : MonoBehaviour
 
         playersCanMove = true;
     }
+
+
+
 
     private IEnumerator FadeOut()
     {

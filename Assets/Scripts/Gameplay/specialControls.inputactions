@@ -67,18 +67,7 @@
                     "path": "<Gamepad>/start",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Controller",
-                    "action": "pause",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "92381f29-0e0b-4713-8a8d-a58aa853326c",
-                    "path": "<Keyboard>/escape",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "KB + M",
+                    "groups": "Gamepad",
                     "action": "pause",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -89,7 +78,29 @@
                     "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Controller",
+                    "groups": "Gamepad",
+                    "action": "dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1352ae4d-b1c5-4959-b662-509532b92f5c",
+                    "path": "<Keyboard>/leftShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KB1Mouse",
+                    "action": "dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "80a2effd-fbcf-4894-b99e-629a0826317e",
+                    "path": "<Keyboard>/rightShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KB2Mouse",
                     "action": "dash",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -100,7 +111,7 @@
                     "path": "<Gamepad>/leftStick/right",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Controller",
+                    "groups": "Gamepad",
                     "action": "navigate",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -111,7 +122,7 @@
                     "path": "<Gamepad>/leftStick/down",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Controller",
+                    "groups": "Gamepad",
                     "action": "navigate",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -122,7 +133,7 @@
                     "path": "<Gamepad>/leftStick/left",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Controller",
+                    "groups": "Gamepad",
                     "action": "navigate",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -133,7 +144,7 @@
                     "path": "<Gamepad>/leftStick/up",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Controller",
+                    "groups": "Gamepad",
                     "action": "navigate",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -144,7 +155,18 @@
                     "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Controller",
+                    "groups": "Gamepad",
+                    "action": "navigate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2c633634-7c00-4803-a7fb-e9a1eb5d37c0",
+                    "path": "<Keyboard>/anyKey",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KB1Mouse;KB2Mouse",
                     "action": "navigate",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -155,7 +177,7 @@
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
-                    "groups": "KB + M",
+                    "groups": "KB1Mouse;KB2Mouse",
                     "action": "click",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -166,7 +188,7 @@
                     "path": "<Gamepad>/leftStick/x",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Controller",
+                    "groups": "Gamepad",
                     "action": "move",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -188,7 +210,7 @@
                     "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
-                    "groups": "KB + M",
+                    "groups": "KB1Mouse",
                     "action": "move",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -199,7 +221,7 @@
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
-                    "groups": "KB + M",
+                    "groups": "KB1Mouse",
                     "action": "move",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -221,7 +243,7 @@
                     "path": "<Keyboard>/leftArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": "KB + M",
+                    "groups": "KB2Mouse",
                     "action": "move",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -232,7 +254,7 @@
                     "path": "<Keyboard>/rightArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": "KB + M",
+                    "groups": "KB2Mouse",
                     "action": "move",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -243,7 +265,7 @@
                     "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Controller",
+                    "groups": "Gamepad",
                     "action": "jump",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -254,7 +276,7 @@
                     "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
-                    "groups": "KB + M",
+                    "groups": "KB1Mouse",
                     "action": "jump",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -265,7 +287,7 @@
                     "path": "<Keyboard>/upArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": "KB + M",
+                    "groups": "KB2Mouse",
                     "action": "jump",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -275,12 +297,12 @@
     ],
     "controlSchemes": [
         {
-            "name": "KB + M",
-            "bindingGroup": "KB + M",
+            "name": "KB1Mouse",
+            "bindingGroup": "KB1Mouse",
             "devices": [
                 {
                     "devicePath": "<Keyboard>",
-                    "isOptional": true,
+                    "isOptional": false,
                     "isOR": false
                 },
                 {
@@ -291,11 +313,27 @@
             ]
         },
         {
-            "name": "Controller",
-            "bindingGroup": "Controller",
+            "name": "Gamepad",
+            "bindingGroup": "Gamepad",
             "devices": [
                 {
                     "devicePath": "<Gamepad>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        },
+        {
+            "name": "KB2Mouse",
+            "bindingGroup": "KB2Mouse",
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Mouse>",
                     "isOptional": false,
                     "isOR": false
                 }

@@ -18,6 +18,8 @@ public class JoinPlayerMenu : MonoBehaviour
     public bool[] playerJoined = new bool[4]; // Track whether a player has joined
     private Gamepad[] assignedGamepads = new Gamepad[4];
     public bool inputEnabled = false;
+    private bool KBPlayer1Assigned = false;
+    private bool KBPlayer2Assigned = false;
 
     private IEnumerator EnableInputAfterDelay()
     {
@@ -44,6 +46,10 @@ public class JoinPlayerMenu : MonoBehaviour
         playButton.interactable = false;
         backButton.interactable = false;
 
+        /*var eventSystem = UnityEngine.EventSystems.EventSystem.current;
+        if (eventSystem != null) eventSystem.sendNavigationEvents = false;*/
+
+
     }
 
     private void Update()
@@ -57,6 +63,16 @@ public class JoinPlayerMenu : MonoBehaviour
             {
                 AssignPlayer(gamepad);
             }
+        }
+
+        // Detect Keyboard Joins
+        if (!KBPlayer1Assigned && (Keyboard.current.aKey.wasPressedThisFrame || Keyboard.current.dKey.wasPressedThisFrame))
+        {
+            AssignKBPlayer(1, Keyboard.current);
+        }
+        else if (!KBPlayer2Assigned && (Keyboard.current.leftArrowKey.wasPressedThisFrame || Keyboard.current.rightArrowKey.wasPressedThisFrame))
+        {
+            AssignKBPlayer(2, Keyboard.current);
         }
 
         if (playerJoined[0] /*&& playerJoined[1]*/)
@@ -77,6 +93,9 @@ public class JoinPlayerMenu : MonoBehaviour
         playButton.interactable = false;
         backButton.interactable = false;
         inputEnabled = false;
+
+        KBPlayer1Assigned = false;
+        KBPlayer2Assigned = false;
 
         PlayerDataManager.ResetAssignedGamepads();
 
@@ -103,7 +122,7 @@ public class JoinPlayerMenu : MonoBehaviour
                 playerJoined[i] = true;
                 assignedGamepads[i] = gamepad; // Assign this gamepad to the player
 
-                PlayerDataManager.AssignedGamepads.Add(gamepad);
+                PlayerDataManager.AssignedPlayers.Add(gamepad);
 
 
                 // Set the panel's color to the corresponding player color
@@ -112,11 +131,40 @@ public class JoinPlayerMenu : MonoBehaviour
 
                 Debug.Log($"Player {i + 1} joined with {gamepad}");
 
-                foreach (var gp in PlayerDataManager.AssignedGamepads)
+                foreach (var gp in PlayerDataManager.AssignedPlayers)
                 {
                     Debug.Log($"Assigned Gamepad: {gp}");
                 }
 
+                return;
+            }
+        }
+
+        Debug.Log("All player slots are full.");
+    }
+
+    private void AssignKBPlayer(int playerNumber, Keyboard keyboard)
+    {
+        if ((playerNumber == 1 && KBPlayer1Assigned) || (playerNumber == 2 && KBPlayer2Assigned))
+        {
+            Debug.Log($"Keyboard slot {playerNumber} already assigned.");
+            return;
+        }
+
+        for (int i = 0; i < playerPanels.Length; i++)
+        {
+            if (!playerJoined[i])
+            {
+                playerJoined[i] = true;
+                playerPanels[i].GetComponent<Image>().color = playerColors[i];
+
+                PlayerDataManager.AssignedPlayers.Insert(0, keyboard);
+
+
+                if (playerNumber == 1) KBPlayer1Assigned = true;
+                if (playerNumber == 2) KBPlayer2Assigned = true;
+
+                Debug.Log($"Keyboard Player {playerNumber} joined as Player {i + 1}");
                 return;
             }
         }
@@ -138,7 +186,7 @@ public class JoinPlayerMenu : MonoBehaviour
 
     public void ResetGame()
     {
-        PlayerDataManager.AssignedGamepads.Clear();
+        PlayerDataManager.AssignedPlayers.Clear();
         Debug.Log("Game reset. Player data cleared.");
         ResetPanels();
     }

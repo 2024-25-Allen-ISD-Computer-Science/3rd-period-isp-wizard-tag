@@ -92,9 +92,17 @@ public class pauseMenu : MonoBehaviour
     // Update is called once per frame and detects if the escape key or mouse button is clicked.
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Keyboard.current.escapeKey.wasPressedThisFrame)
         {
-            pauseActivate();
+            
+            if (!isPaused)
+            {
+                pause();
+            }
+            else
+            {
+                resume();
+            }
         }
 
         if (Input.GetMouseButtonDown(0))
@@ -108,6 +116,7 @@ public class pauseMenu : MonoBehaviour
     {
         if (isPaused)
         {
+            Debug.Log("Pause");
             resume();
         }
         else

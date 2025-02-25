@@ -22,9 +22,9 @@ public class PlayerSpawner : MonoBehaviour
 
     private void SpawnPlayers()
     {
-        List<Gamepad> assignedGamepads = PlayerDataManager.AssignedGamepads;
+        List<InputDevice> assignedPlayers = PlayerDataManager.AssignedPlayers;
 
-        for (int i = 0; i < assignedGamepads.Count; i++)
+        for (int i = 0; i < assignedPlayers.Count; i++)
         {
             if (i >= spawnPoints.Length)
             {
@@ -37,10 +37,28 @@ public class PlayerSpawner : MonoBehaviour
 
             // Assign the controller to the PlayerInput component
             PlayerInput playerInput = playerInstance.GetComponent<PlayerInput>();
+
             if (playerInput != null)
             {
-                playerInput.SwitchCurrentControlScheme(assignedGamepads[i]);
-                Debug.Log($"Player {i + 1} spawned with controller: {assignedGamepads[i]}");
+                // Assign control schemes correctly
+                if (assignedPlayers[i] is Gamepad)
+                {
+                    playerInput.SwitchCurrentControlScheme("Gamepad", assignedPlayers[i]);
+                }
+                else if (assignedPlayers[i] is Keyboard)
+                {
+                    if (i == 0)
+                    {
+                        playerInput.SwitchCurrentControlScheme("KB1Mouse", assignedPlayers[i]);
+                    }
+
+                    else
+                    {
+                        playerInput.SwitchCurrentControlScheme("KB2Mouse", assignedPlayers[i]);
+                    }
+                }
+
+                Debug.Log($"Player {i + 1} spawned with: {assignedPlayers[i]}");
             }
             else
             {
@@ -48,7 +66,7 @@ public class PlayerSpawner : MonoBehaviour
             }
 
 
-            if (assignedGamepads[i] == null)
+            if (assignedPlayers[i] == null)
             {
                 Debug.LogWarning($"No controller assigned for Player {i + 1}. Skipping spawn.");
                 continue;
