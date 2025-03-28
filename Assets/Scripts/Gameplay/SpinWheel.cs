@@ -213,7 +213,10 @@ public class SpinWheel : MonoBehaviour
         ThreePWheel.SetActive(false);
         FourPWheel.SetActive(false);
         backgroundDarken.SetActive(false);
+
+        PlayerDataManager.gameRunning = true;
     }
+
 
 }
 

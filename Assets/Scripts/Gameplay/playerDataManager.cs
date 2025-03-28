@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
+using UnityEngine.SceneManagement;
 
 public static class PlayerDataManager
 {
@@ -12,5 +14,21 @@ public static class PlayerDataManager
     {
         AssignedPlayers.Clear();
     }
+
+    public static void ChangeLevels()
+    {
+        if (rounds < 3)
+        {
+            RandomSceneLoader.LoadNextScene();
+        }
+        else
+        {
+            SceneManager.LoadScene(5);
+        }
+    }
+
+    public static bool gameRunning = false;
+
+    public static int rounds = 0;
 }
 

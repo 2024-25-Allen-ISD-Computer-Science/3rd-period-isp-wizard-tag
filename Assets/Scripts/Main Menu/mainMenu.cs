@@ -179,9 +179,13 @@ public class mainMenu : MonoBehaviour
         }
     }
 
-    public void PlayButton()
+    public void PlayButton1()
     {
         SceneManager.LoadScene(1);
+    }
+    public void PlayButton2()
+    {
+        SceneManager.LoadScene(2);
     }
 
 

@@ -9,7 +9,19 @@ EditorBuildSettings:
     path: Assets/Scenes/Title Page.unity
     guid: 93c5561d2fcf1d54196112919985533a
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/Scenes/Fire 1.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Fire 2.unity
+    guid: abe39fe3269018c489acbf10e6e17e8c
+  - enabled: 1
+    path: Assets/Scenes/Fire 3.unity
+    guid: dee30804bbb6f8941a823594ce1e7ad4
+  - enabled: 1
+    path: Assets/Scenes/Water.unity
+    guid: df7879b316ea724428ffe5a0e4e68716
+  - enabled: 1
+    path: Assets/Scenes/Leaderboard.unity
+    guid: 31bdcab684d17134a82e23c16c4c46f3
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: cc19baea0f33b8748ad52f30492fa151, type: 2}
